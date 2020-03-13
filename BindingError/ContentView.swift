@@ -70,6 +70,8 @@ private struct PickerController: UIViewRepresentable {
         }
 
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            print("Selecting \(row) in component \(component)")
+
             // Make sure we don't select like 30th of Feb
             let firstOfMonth = Date(year: pickerView.selectedRow(inComponent: 2) + minDate,
                                     month: pickerView.selectedRow(inComponent: 1) + 1,
@@ -78,7 +80,6 @@ private struct PickerController: UIViewRepresentable {
             if day > firstOfMonth.monthDays {
                 day = firstOfMonth.monthDays
             }
-
             // Update the current date
             selectedDate = Date(year: pickerView.selectedRow(inComponent: 2) + minDate,
                                 month: pickerView.selectedRow(inComponent: 1) + 1,
